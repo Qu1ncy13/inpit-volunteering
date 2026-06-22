@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Расписание мероприятий Инпит</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1>Расписание мероприятий Инпит</h1>
+    <div class="header-icons">
+      <button class="icon" type="button" aria-label="Сменить тему">т</button>
+      <button class="icon" type="button" aria-label="Профиль">п</button>
+    </div>
+  </header>
+
+  <nav class="dates">
+    <button class="date active" type="button"><b>15</b><span>пн</span></button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+    <button class="date" type="button">дата</button>
+  </nav>
+
+  <main class="main">
+    <h2>15 июня</h2>
+
+    <div class="search">
+      <input type="search" placeholder="поиск">
+    </div>
+
+    <div class="filters">
+      <button class="chip" type="button">спорт</button>
+      <button class="chip active" type="button">наука</button>
+      <button class="chip" type="button">культура</button>
+      <button class="chip" type="button">волонтерство</button>
+    </div>
+
+    <section class="schedule">
+
+      <div class="event">
+        <div class="time">время</div>
+        <div class="card">
+          <button class="add" type="button" aria-label="Добавить мероприятие">+</button>
+          <h3>название меро</h3>
+          <span class="type">тип меро</span>
+          <p>описание + где проводится</p>
+        </div>
+      </div>
+
+      <div class="event">
+        <div class="time">время</div>
+        <div class="card empty"></div>
+      </div>
+
+      <div class="event">
+        <div class="time">время</div>
+        <div class="card empty"></div>
+      </div>
+
+    </section>
+  </main>
+
+<script>
+  document.querySelectorAll('.date').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.date').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      chip.classList.toggle('active');
+    });
+  });
+</script>
+</body>
+</html>
