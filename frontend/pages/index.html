@@ -1,44 +1,34 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Расписание мероприятий Инпит</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="../images/faviconNoBG.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Расписание мероприятий Инпит</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
 
   <header class="header">
-    <h1>Расписание мероприятий Инпит</h1>
+    <a href="index.html"><img src="../images/logoNoBG.png" alt="logo" class="logo"></a>
     <div class="header-icons">
-      <button class="icon" type="button" aria-label="Сменить тему">т</button>
-      <button class="icon" type="button" aria-label="Профиль">п</button>
+      <button class="icon" type="b  utton" aria-label="Сменить тему">т</button>
     </div>
   </header>
 
   <nav class="dates">
-    <button class="date active" type="button"><b>15</b><span>пн</span></button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
-    <button class="date" type="button">дата</button>
+    <!-- Генерим даты через JS -->
+     <!-- Исправить стили, чтоб 1 дата не растягивалась на фул экран -->
+    
+    
   </nav>
 
   <main class="main">
-    <h2>15 июня</h2>
+    <!-- Генерим даты через JS -->
+    <h2 class = "mainDate">date</h2>
 
     <div class="search">
       <input type="search" placeholder="поиск">
@@ -50,45 +40,55 @@
       <button class="chip" type="button">культура</button>
       <button class="chip" type="button">волонтерство</button>
     </div>
-
+    
     <section class="schedule">
 
-      <div class="event">
-        <div class="time">время</div>
-        <div class="card">
-          <button class="add" type="button" aria-label="Добавить мероприятие">+</button>
-          <h3>название меро</h3>
-          <span class="type">тип меро</span>
-          <p>описание + где проводится</p>
-        </div>
-      </div>
+      
+      
 
-      <div class="event">
-        <div class="time">время</div>
-        <div class="card empty"></div>
-      </div>
+      
 
-      <div class="event">
-        <div class="time">время</div>
-        <div class="card empty"></div>
-      </div>
-
+      
+      
     </section>
+    
+      
+    
   </main>
-
-<script>
-  document.querySelectorAll('.date').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.date').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
-
-  document.querySelectorAll('.chip').forEach(chip => {
-    chip.addEventListener('click', () => {
-      chip.classList.toggle('active');
-    });
-  });
-</script>
+  <div class="hidden overlay" id="signUpModal">
+    <div class="signUpModal">
+      <div class="close-modal">
+        <button class="closeBtn">
+          <svg height="21" viewBox="0 0 21 21" width="21" xmlns="http://www.w3.org/2000/svg">
+            <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(5 5)"><path d="m10.5 10.5-10-10z"/><path d="m10.5.5-10 10"/></g>
+          </svg>
+        </button>
+      </div>
+      <div class="form-group">
+        <label for="surname">Фамилия</label>
+        <input type="text" name="surname" id="surname">
+      </div>
+      <div class="form-group">
+        <label for="name">Имя</label>
+        <input type="text" id="name" name="name">
+      </div>
+      <div class="form-group">
+        <label for="group">Группа</label>
+        <input type="text" id="group" name="group">
+      </div>
+      <div class="submit-btn-block">
+        <button type="submit" class="button submitBtn">Записаться</button>
+      </div>
+    </div>
+  </div>
+  <div class="overlay hidden" id = "successSignInModal">
+    <div class="success-sign-in-modal">
+      <h1>Вы успешно записаны!</h1>
+      <div class="close-sign-in-modal">
+        <button class="btn closeSignInModalBtn" >Закрыть</button>
+      </div>
+    </div>
+  </div>
+<script src="../js/main.js"></script>
 </body>
 </html>
