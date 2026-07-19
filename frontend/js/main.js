@@ -78,19 +78,45 @@ function dateBarGenerator(){
         datePlace.append(button)
     }
 }
+
+function formatDateHuman(dateString){
+    const [year, month, day] = dateString.split("-").map(Number);
+    const dateObj = new Date(year, month - 1, day);
+    return `${dateObj.getDate()} ${months[dateObj.getMonth()]}, ${weekDays[dateObj.getDay()]}`;
+}
+
+function openSignUpModal(eventId){
+    const event = fakeEvents.find(e => e.id === eventId);
+    if (event){
+        const typeEl = document.getElementById("modalEventType");
+        const titleEl = document.getElementById("modalEventTitle");
+        const metaEl = document.getElementById("modalEventMeta");
+        if (typeEl) typeEl.textContent = event.type;
+        if (titleEl) titleEl.textContent = event.title;
+        if (metaEl) metaEl.textContent = `${formatDateHuman(event.date)} · ${event.time} · ${event.place}`;
+    }
+    signInModal.classList.remove("hidden");
+}
+
 function setupMainEvents(){
     const signInToEventBtn = document.querySelectorAll(".add");
-    const closeModalBtn = signInModal.querySelector(".closeBtn");
+    const cancelModalBtn = signInModal.querySelector(".cancelBtn");
     const submitModalBtn = signInModal.querySelector(".submitBtn");
     const closeSignInModalBtn = successSignInModal.querySelector(".closeSignInModalBtn");
     
     signInToEventBtn.forEach((button) =>{
         button.addEventListener("click", () =>{
-            signInModal.classList.remove("hidden");
+            const eventId = Number(button.dataset.id);
+            openSignUpModal(eventId);
         });
     });
-    closeModalBtn.addEventListener("click", () =>{
+    cancelModalBtn.addEventListener("click", () =>{
         signInModal.classList.add("hidden");
+    });
+    signInModal.addEventListener("click", (e) =>{
+        if (e.target === signInModal){
+            signInModal.classList.add("hidden");
+        }
     });
     submitModalBtn.addEventListener("click", () =>{
         // ОТПРАВКА ДАННЫХ
@@ -101,6 +127,7 @@ function setupMainEvents(){
         successSignInModal.classList.add("hidden");
     });
 }
+
 function renderEvents(date){
     const selectedDateString = formatDate(date);
     eventsPlace.innerHTML = '';
@@ -119,7 +146,7 @@ function renderEvents(date){
                                 <p>${event.place}</p>
                             </div>
                         <div class="card-btn-block">
-                            <button class="add" type="button" aria-label="Добавить мероприятие">Записаться</button>
+                            <button class="add" type="button" aria-label="Добавить мероприятие" data-id="${event.id}">Записаться</button>
                         </div>
                     </div>
                 
@@ -131,18 +158,21 @@ function renderEvents(date){
     if (!flag){
         eventsPlace.innerHTML = `
             <div class="empty-events">
-                <h1>В этот день нет мероприятий</h1>
+                <h2>В этот день нет мероприятий</h2>
+                <p>Мероприятия на эту дату не запланированны или ещё не добавлены</p>
             </div>
         `
     }
     setupMainEvents();
 }
+
 function formatDate(date){
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`
 }
+
 function renderEmptyState(){
     mainPlace.innerHTML = `
         <div class="empty-events">
@@ -150,6 +180,7 @@ function renderEmptyState(){
         </div>
     `;
 }
+
 function updateMain(){
     dateBarGenerator();
     renderEvents(selectedDate);

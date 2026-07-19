@@ -55,32 +55,20 @@
       
     
   </main>
-  <div class="hidden overlay" id="signUpModal">
-    <div class="signUpModal">
-      <div class="close-modal">
-        <button class="closeBtn">
-          <svg height="21" viewBox="0 0 21 21" width="21" xmlns="http://www.w3.org/2000/svg">
-            <g fill="none" fill-rule="evenodd" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" transform="translate(5 5)"><path d="m10.5 10.5-10-10z"/><path d="m10.5.5-10 10"/></g>
-          </svg>
-        </button>
-      </div>
-      <div class="form-group">
-        <label for="surname">Фамилия</label>
-        <input type="text" name="surname" id="surname">
-      </div>
-      <div class="form-group">
-        <label for="name">Имя</label>
-        <input type="text" id="name" name="name">
-      </div>
-      <div class="form-group">
-        <label for="group">Группа</label>
-        <input type="text" id="group" name="group">
-      </div>
-      <div class="submit-btn-block">
-        <button type="submit" class="button submitBtn">Записаться</button>
-      </div>
+<div class="hidden overlay" id="signUpModal">
+  <div class="signUpModal">
+    <h2>Записаться на мероприятие</h2>
+    <div class="modal-event-info">
+      <span class="type" id="modalEventType"></span>
+      <p class="modal-event-title" id="modalEventTitle"></p>
+      <p class="modal-event-meta" id="modalEventMeta"></p>
+    </div>
+    <div class="submit-btn-block">
+      <button type="button" class="button cancelBtn">Отмена</button>
+      <button type="submit" class="button submitBtn">Записаться</button>
     </div>
   </div>
+</div>я
   <div class="overlay hidden" id = "successSignInModal">
     <div class="success-sign-in-modal">
       <h1>Вы успешно записаны!</h1>
