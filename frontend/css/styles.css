@@ -98,6 +98,7 @@ h1, h2, h3 {
 }
 
 .date {
+  position: relative;
   height: 64px;
   min-width: 60px;
   border-radius: 12px;
@@ -110,7 +111,16 @@ h1, h2, h3 {
   font-size: 0.82rem;
   transition: 0.2s;
 }
+.date.has-events::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: orange;
 
+    position: absolute;
+    bottom: 6px;
+}
 .date:hover {
   background: var(--btn-hover);
   transform: translateY(-3px);

@@ -34,9 +34,18 @@ const fakeEvents = [
     {
         id: 1,
         title: "Посадка деревьев",
-        date: "2026-07-18",
+        date: "2026-07-27",
         type: "Волонтерство",
         place: "ИНПИТ",
+        time: "14:00"
+    },
+    
+    {
+        id: 3,
+        title: "Хакатон",
+        date: "2026-08-01",
+        type: "Наука",
+        place: "Ауд. 312",
         time: "14:00"
     },
     {
@@ -46,7 +55,8 @@ const fakeEvents = [
         type: "Наука",
         place: "Ауд. 312",
         time: "12:00"
-    }
+    },
+    
 ];
 
 function dateBarGenerator(){
@@ -55,10 +65,16 @@ function dateBarGenerator(){
     for (let i = 0; i < 30; i++){
 
         const currentDate = new Date(today);
-
         currentDate.setDate(today.getDate() + i);
+        const currentDateString = formatDate(currentDate);
+        const hasEvents = fakeEvents.some((event) =>{
+            return event.date === currentDateString;
+        });
         const button = document.createElement("button");
         button.classList.add("date");
+        if (hasEvents){
+            button.classList.add("has-events");
+        }
         if (i === 0){
             button.classList.add("active");
             mainPageDate.textContent = `${currentDate.getDate()}` + ` ` + `${months[currentDate.getMonth()]}`;
@@ -130,32 +146,12 @@ function setupMainEvents(){
 
 function renderEvents(date){
     const selectedDateString = formatDate(date);
+    const dayEvents = fakeEvents.filter((event) => selectedDateString === event.date);
+    sortEventsByTime(dayEvents);
+    
     eventsPlace.innerHTML = '';
-    let flag = false;
-    fakeEvents.forEach((event) =>{
-        if (event.date === selectedDateString){
-            flag = true;
-            const eventCard = document.createElement("div");
-            eventCard.className = "event";
-            eventCard.innerHTML = `
-                    <div class="time">${event.time}</div>
-                        <div class="card">
-                            <div class="card-info-block">
-                                <h3>${event.title}</h3>
-                                <span class="type">${event.type}</span>
-                                <p>${event.place}</p>
-                            </div>
-                        <div class="card-btn-block">
-                            <button class="add" type="button" aria-label="Добавить мероприятие" data-id="${event.id}">Записаться</button>
-                        </div>
-                    </div>
-                
-            `;
-            eventsPlace.append(eventCard);
-            
-        }
-    });
-    if (!flag){
+    
+    if (dayEvents.length === 0){
         eventsPlace.innerHTML = `
             <div class="empty-events">
                 <h2>В этот день нет мероприятий</h2>
@@ -163,6 +159,29 @@ function renderEvents(date){
             </div>
         `
     }
+    dayEvents.forEach((event) =>{
+        
+        const eventCard = document.createElement("div");
+        eventCard.className = "event";
+        eventCard.innerHTML = `
+                <div class="time">${event.time}</div>
+                    <div class="card">
+                        <div class="card-info-block">
+                            <h3>${event.title}</h3>
+                            <span class="type">${event.type}</span>
+                            <p>${event.place}</p>
+                        </div>
+                    <div class="card-btn-block">
+                        <button class="add" type="button" aria-label="Добавить мероприятие" data-id="${event.id}">Записаться</button>
+                    </div>
+                </div>
+                
+        `;
+        eventsPlace.append(eventCard);
+            
+        
+    });
+    
     setupMainEvents();
 }
 
@@ -172,15 +191,15 @@ function formatDate(date){
     const day = String(date.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`
 }
-
-function renderEmptyState(){
-    mainPlace.innerHTML = `
-        <div class="empty-events">
-            <h1>В этот день нет мероприятий</h1>
-        </div>
-    `;
+function timeToMinutes(time) {
+    const [hours, minutes] = time.split(":").map(Number);
+    return hours * 60 + minutes;
 }
-
+function sortEventsByTime(eventsArray){
+    eventsArray.sort((a, b) =>{
+        return timeToMinutes(a.time) - timeToMinutes(b.time);
+    });
+}
 function updateMain(){
     dateBarGenerator();
     renderEvents(selectedDate);
