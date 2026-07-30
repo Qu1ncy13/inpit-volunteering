@@ -3,6 +3,7 @@ import { fakeEvents } from "./api.js";
 import { signInModal } from "./dom.js";
 
 export function openSignUpModal(eventId){
+    
     const event = fakeEvents.find(e => e.id === eventId);
     if (event){
         const typeEl = document.getElementById("modalEventType");

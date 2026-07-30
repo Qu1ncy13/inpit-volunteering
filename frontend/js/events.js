@@ -1,6 +1,8 @@
 import {openSignUpModal} from "./modal.js";
-import { signInModal } from "./dom.js";
+import { signInModal, successSignInModal } from "./dom.js";
 
+import { state } from "./state.js";
+import { renderEvents } from "./render.js";
 export function initEventListeners(){
     const signInToEventBtn = document.querySelectorAll(".add");
     const cancelModalBtn = signInModal.querySelector(".cancelBtn");
@@ -28,5 +30,24 @@ export function initEventListeners(){
     });
     closeSignInModalBtn.addEventListener("click", () =>{
         successSignInModal.classList.add("hidden");
+    });
+}
+export function initFilterListeners(){
+    const filterBtn = document.querySelectorAll(".chip");
+    filterBtn.forEach((button) =>{
+        button.addEventListener("click", () =>{
+            if (button.classList.contains("active")){
+                button.classList.remove("active");
+                
+            }
+            else{
+                filterBtn.forEach((b) => {
+                    b.classList.remove("active");
+                });
+                button.classList.add("active");
+                
+            }
+            renderEvents(state.selectedDate);
+        });
     });
 }

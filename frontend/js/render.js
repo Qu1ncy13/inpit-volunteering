@@ -8,11 +8,27 @@ import { state } from "./state.js";
 export function renderEvents(date){
     const selectedDateString = formatDate(date);
     const dayEvents = fakeEvents.filter((event) => selectedDateString === event.date);
-    sortEventsByTime(dayEvents);
+
+
+    const activeFilters = document.querySelectorAll(".chip.active");
+    let activeTypes = [];
+    activeFilters.forEach((button) =>{
+        activeTypes.push(Number(button.dataset.type));
+    });
+    let filteredEvents = [];
+    if (activeTypes.length === 0){
+        filteredEvents = dayEvents;
+    }
+    else{
+        filteredEvents = dayEvents.filter((event) => activeTypes.includes(event.typeId));
+    }
+    
+
+    sortEventsByTime(filteredEvents);
     
     eventsPlace.innerHTML = '';
     
-    if (dayEvents.length === 0){
+    if (filteredEvents.length === 0){
         eventsPlace.innerHTML = `
             <div class="empty-events">
                 <h2>В этот день нет мероприятий</h2>
@@ -20,7 +36,7 @@ export function renderEvents(date){
             </div>
         `
     }
-    dayEvents.forEach((event) =>{
+    filteredEvents.forEach((event) =>{
         const eventCard = document.createElement("div");
         eventCard.className = "event";
         eventCard.innerHTML = `

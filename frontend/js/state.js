@@ -1,4 +1,5 @@
 
 export const state = {
-    selectedDate: new Date()
+    selectedDate: new Date(),
+    activeFilters:[]
 }
