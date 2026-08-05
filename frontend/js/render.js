@@ -1,13 +1,13 @@
-import { fakeEvents } from "./api.js";
+
 import { months, weekDays } from "./constants.js";
 import { mainPageDate, datePlace, eventsPlace } from "./dom.js";
-import { initEventListeners } from "./events.js";
+import { initEventListeners } from "./listeners.js";
 import { formatDate, sortEventsByTime } from "./format.js";
 import { state } from "./state.js";
 
 export function renderEvents(date){
     const selectedDateString = formatDate(date);
-    const dayEvents = fakeEvents.filter((event) => selectedDateString === event.date);
+    const dayEvents = state.events.filter((event) => selectedDateString === event.date);
 
 
     const activeFilters = document.querySelectorAll(".chip.active");
@@ -65,7 +65,7 @@ export function dateBarGenerator(){
         const currentDate = new Date(today);
         currentDate.setDate(today.getDate() + i);
         const currentDateString = formatDate(currentDate);
-        const hasEvents = fakeEvents.some((event) =>{
+        const hasEvents = state.events.some((event) =>{
             return event.date === currentDateString;
         });
         const button = document.createElement("button");

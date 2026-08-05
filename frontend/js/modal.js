@@ -1,10 +1,10 @@
 import {formatDateHuman} from "./format.js";
-import { fakeEvents } from "./api.js";
-import { signInModal } from "./dom.js";
 
+import { signInModal } from "./dom.js";
+import { state } from "./state.js";
 export function openSignUpModal(eventId){
     
-    const event = fakeEvents.find(e => e.id === eventId);
+    const event = state.events.find(e => e.id === eventId);
     if (event){
         const typeEl = document.getElementById("modalEventType");
         const titleEl = document.getElementById("modalEventTitle");
