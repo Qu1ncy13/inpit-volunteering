@@ -1,0 +1,271 @@
+/* Стили для страницы входа/регистрации и страницы профиля.
+   Использует переменные и шрифты из styles.css — подключать вместе. */
+
+.account-main {
+  padding: 40px 28px 60px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---------- Вход / регистрация ---------- */
+
+.auth-wrap {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
+.auth-card {
+  width: 380px;
+  max-width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--event-border);
+  border-radius: 20px;
+  padding: 36px 34px 30px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 26px rgba(40, 50, 90, 0.12);
+}
+
+.auth-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--event-hover), var(--accent));
+}
+
+/* Чисто CSS-переключение вкладок через скрытые radio-инпуты */
+.auth-tab-radio {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.auth-tabs {
+  display: flex;
+  gap: 8px;
+  background: var(--btn);
+  border-radius: 999px;
+  padding: 4px;
+  margin-bottom: 26px;
+}
+
+.auth-tabs label {
+  flex: 1;
+  text-align: center;
+  padding: 9px 0;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#tab-login:checked ~ .auth-card .auth-tabs label[for="tab-login"],
+#tab-register:checked ~ .auth-card .auth-tabs label[for="tab-register"] {
+  background: var(--accent);
+  color: #fff;
+}
+
+.auth-form {
+  display: none;
+  flex-direction: column;
+}
+
+#tab-login:checked ~ .auth-card .auth-forms #form-login,
+#tab-register:checked ~ .auth-card .auth-forms #form-register {
+  display: flex;
+}
+
+.auth-title {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+.auth-subtitle {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.auth-form .form-group {
+  margin: 0 0 14px;
+}
+
+.auth-form .form-group input {
+  border: 1px solid var(--event-border);
+  background: #fff;
+}
+
+.auth-form .form-group input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.auth-hint {
+  margin-top: 16px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.auth-hint a,
+.auth-hint label {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.auth-hint a:hover,
+.auth-hint label:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Профиль ---------- */
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--event);
+  border: 1px solid var(--event-border);
+  border-radius: 16px;
+  padding: 20px 24px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.profile-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-info h2 {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+.profile-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.profile-actions {
+  margin-left: auto;
+}
+
+.profile-section {
+  margin-bottom: 34px;
+}
+
+.profile-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.profile-event-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--event);
+  border: 1px solid var(--event-border);
+  border-radius: 14px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.profile-event-date {
+  flex: 0 0 76px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.profile-event-body {
+  flex: 1;
+  min-width: 160px;
+}
+
+.profile-event-body h4 {
+  margin: 0 0 4px;
+  font-size: 0.95rem;
+}
+
+.profile-event-body p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.profile-cancel-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--btn);
+  font-size: 0.8rem;
+  transition: 0.2s;
+  flex-shrink: 0;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.profile-cancel-btn:hover {
+  background: var(--btn-hover);
+}
+
+.account-info-wrap {
+  background: var(--header-bg);
+  border: 1px solid var(--event-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.account-info-row {
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--event-border);
+}
+
+.account-info-row:last-child {
+  border-bottom: none;
+}
+
+.account-info-row p {
+  margin: 0 0 4px;
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.account-info-row h4 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+@media (max-width: 640px) {
+  .account-main {
+    padding: 24px 18px 48px;
+  }
+  .auth-card {
+    padding: 28px 22px 24px;
+  }
+  .profile-actions {
+    margin-left: 0;
+    width: 100%;
+  }
+  .profile-actions .header-link {
+    display: inline-block;
+  }
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="shortcut icon" href="../images/faviconNoBG.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход — Расписание мероприятий Инпит</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/account.css">
+</head>
+<body>
+
+<header class="header">
+  <a href="index.html">
+    <img src="../images/logoNoBG.png" alt="logo" class="logo">
+  </a>
+
+  <div class="header-icons">
+    <a href="index.html" class="header-link">К расписанию</a>
+  </div>
+</header>
+
+<main class="account-main">
+  <div class="auth-wrap">
+
+    <input type="radio" name="authTab" id="tab-login" class="auth-tab-radio" checked>
+    <input type="radio" name="authTab" id="tab-register" class="auth-tab-radio">
+
+    <div class="auth-card">
+
+      <div class="auth-tabs">
+        <label for="tab-login">Вход</label>
+        <label for="tab-register">Регистрация</label>
+      </div>
+
+      <div class="auth-forms">
+
+        <!-- Вход -->
+        <form class="auth-form" id="form-login">
+
+          <h2 class="auth-title">С возвращением</h2>
+          <p class="auth-subtitle">Войдите, чтобы записываться на мероприятия</p>
+
+          <div class="form-group">
+            <label for="login-email">Почта</label>
+            <input
+              type="email"
+              id="login-email"
+              name="email"
+              placeholder="Введите почту"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="login-password">Пароль</label>
+            <input
+              type="password"
+              id="login-password"
+              name="password"
+              placeholder="Введите пароль"
+              required>
+          </div>
+
+          <div class="submit-btn-block">
+            <button type="submit" class="button submitBtn">
+              Войти
+            </button>
+          </div>
+
+          <p class="auth-hint">
+            Нет аккаунта?
+            <label for="tab-register">Зарегистрируйтесь</label>
+          </p>
+
+        </form>
+
+        <!-- Регистрация -->
+        <form class="auth-form" id="form-register">
+
+          <h2 class="auth-title">Создать аккаунт</h2>
+          <p class="auth-subtitle">Это займёт меньше минуты</p>
+
+          <div class="form-group">
+            <label for="reg-fullname">ФИО</label>
+            <input
+              type="text"
+              id="reg-fullname"
+              name="fullname"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-email">Почта</label>
+            <input
+              type="email"
+              id="reg-email"
+              name="email"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-password">Пароль</label>
+            <input
+              type="password"
+              id="reg-password"
+              name="password"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="reg-group">Учебная группа</label>
+            <input
+              type="text"
+              id="reg-group"
+              name="group"
+              required>
+          </div>
+
+          <div class="submit-btn-block">
+            <button type="submit" class="button submitBtn">
+              Зарегистрироваться
+            </button>
+          </div>
+
+          <p class="auth-hint">
+            Уже есть аккаунт?
+            <label for="tab-login">Войдите</label>
+          </p>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>

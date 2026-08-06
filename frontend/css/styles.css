@@ -89,6 +89,67 @@ h1, h2, h3 {
   transform: translateY(-2px);
 }
 
+.header-user {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--btn);
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: var(--text);
+  transition: 0.2s;
+}
+
+.header-user:hover {
+  background: var(--btn-hover);
+  transform: translateY(-2px);
+}
+
+.header-user.is-logged-in {
+  background: var(--accent);
+  color: #fff;
+}
+
+.header-user--text {
+  width: auto;
+  height: auto;
+  padding: 9px 20px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.header-link {
+  padding: 9px 18px;
+  border-radius: 999px;
+  background: var(--btn);
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: 0.2s;
+}
+
+.header-link:hover {
+  background: var(--btn-hover);
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: transparent;
+  border: 1px solid #C0392B;
+  color: #C0392B;
+}
+
+.btn-danger:hover {
+  background: #C0392B;
+  color: #fff;
+}
+
 .dates {
   display: flex;
   gap: 10px;
@@ -325,7 +386,7 @@ h1, h2, h3 {
   }
 }
 
-/* Блок с информацией о мероприятии внутри модалки записи */
+
 .modal-event-info {
   background: var(--event);
   border-radius: 12px;
@@ -346,7 +407,7 @@ h1, h2, h3 {
   margin: 0;
 }
 
-/* Оставлено на случай других форм на сайте */
+
 .form-group{
   display: flex;
   flex-direction: column;
