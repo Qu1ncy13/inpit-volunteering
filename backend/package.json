@@ -55,6 +55,12 @@
   "dependencies": {
   
     
+  "bcrypt": "^6.0.0",
+  
+    
+  "better-sqlite3": "^13.0.3",
+  
+    
   "cors": "^2.8.6",
   
     

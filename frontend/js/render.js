@@ -1,4 +1,3 @@
-
 import { months, weekDays } from "./constants.js";
 import { mainPageDate, datePlace, eventsPlace } from "./dom.js";
 import { initEventListeners } from "./listeners.js";
