@@ -19,6 +19,53 @@ app.get("/events", (req, res) =>{
     res.json(events);
 });
 
+app.post("/login", async (req, res) =>{
+    console.log("3");
+
+    const {email, password} = req.body;
+    
+    // проверки пустоты input и их типов данных
+    if (typeof email !== "string" ||  email.trim() === ""){
+        return res.status(400).json({
+            message: "Некорректный email"
+        });
+    }
+    const cleanEmail = email.trim();
+
+    if (typeof password !== "string" || password.trim() === ""){
+        return res.status(401).json({
+            message: "Некорректный пароль"
+        });
+    }
+
+    const user = db.prepare(`
+        SELECT *
+        FROM users
+        WHERE email = ?
+    `).get(cleanEmail);
+
+    
+    
+    if (user === undefined){
+        return res.status(400).json({
+            message: "Пользователь не найден"
+        });
+    }
+
+    const passwordMatched = await bcrypt.compare(password, user.password);
+    console.log("passwordMatched:", passwordMatched);
+    console.log("4");
+    if (!passwordMatched){
+        return res.status(401).json({
+            message: "Неверный пароль"
+        });
+    }
+    res.json({
+        message: "Вход выполнен"
+    });
+    console.log("5");
+
+})
 app.post("/register", async (req, res) =>{
     const {name, email, password, study_group} = req.body;
     
@@ -58,7 +105,7 @@ app.post("/register", async (req, res) =>{
         return res.status(400).json({
             message: "Некорректный email"
         });
-    }  
+    }
     // проверки пароля
     if (typeof password !== 'string' || password.length < 8 || password.length > 100){
         return res.status(400).json({

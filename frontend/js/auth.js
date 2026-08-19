@@ -28,4 +28,33 @@ function registration(){
 
     });
 }
+
+function login(){
+    const loginForm = document.getElementById("form-login");
+
+    const loginEmail = document.getElementById("login-email");
+    const loginPassword = document.getElementById("login-password");
+
+    loginForm.addEventListener("submit", async (event) =>{
+        event.preventDefault();
+        
+        const userLoginData = {
+            email: loginEmail.value,
+            password: loginPassword.value
+        }
+        console.log('1');
+        const responce = await fetch("http://localhost:3000/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(userLoginData)
+        });
+        console.log("2");
+        const testResponce = await responce.json();
+        console.log(testResponce);
+
+    });
+}
+login();
 registration();
