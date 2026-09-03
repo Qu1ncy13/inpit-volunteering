@@ -14,10 +14,9 @@
 <body>
 
   <header class="header">
-    <a href="index.html"><img src="../images/logoNoBG.png" alt="logo" class="logo"></a>
+    <a href="admin.html"><img src="../images/logoNoBG.png" alt="logo" class="logo"></a>
     <div class="header-icons">
-      <span class="admin-badge">Страница Администратора</span>
-      <a href="index.html" class="header-link">Вернуться на сайт</a>
+      <span class="admin-badge">Страница Администратора</span>      
       <a href="login.html" class="header-link">Выйти</a>
     </div>
   </header>
@@ -32,100 +31,69 @@
     </div>
 
     <div class="admin-stats">
-      <div class="admin-stat">
+      <div class="admin-stat" id="eventsCount">
         <b>3</b>
         <span>Всего мероприятий</span>
       </div>
-      <div class="admin-stat">
+      <div class="admin-stat" id="usersCount">
         <b>8</b>
         <span>Записей всего</span>
       </div>
-      <div class="admin-stat">
+      <div class="admin-stat" id="categoryCount">
         <b>4</b>
         <span>Категории</span>
       </div>
     </div>
 
     <div class="admin-table-wrap">
-
+      
       <div class="admin-row">
-        <div class="admin-row-date"><b>8</b>августа, 12:00</div>
+        <div class="admin-row-date" id="adminRowDate"><b>8</b>августа, 12:00</div>
         <div class="admin-row-body">
-          <span class="type">Культура</span>
-          <h3>Музей</h3>
-          <p>Ауд. 312</p>
+          <span class="type" id="eventType">Культура</span>
+          <h3 id="eventName">Музей</h3>
+          <p id="eventPlace">Ауд. 312</p>
         </div>
         <div class="admin-row-actions">
-          <a href="#attendeesModal3" class="admin-icon-btn" aria-label="Список записавшихся">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </a>
-          <a href="#editEventModal3" class="admin-icon-btn" aria-label="Редактировать">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-          </a>
-          <a href="#deleteEventModal3" class="admin-icon-btn delete" aria-label="Удалить">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6"/></svg>
-          </a>
+          <button class="admin-icon-btn attendeesModalBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </button>
+          <button class="admin-icon-btn editEventBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>
+            </svg>
+          </button>
+          <button class="admin-icon-btn deleteEventBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6"/>
+            </svg>
+          </button>
         </div>
       </div>
 
 
-      <div class="admin-row">
-        <div class="admin-row-date"><b>8</b>августа, 14:00</div>
-        <div class="admin-row-body">
-          <span class="type">Наука</span>
-          <h3>Хакатон</h3>
-          <p>Ауд. 312</p>
-        </div>
-        <div class="admin-row-actions">
-          <a href="#attendeesModal2" class="admin-icon-btn" aria-label="Список записавшихся">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </a>
-          <a href="#editEventModal2" class="admin-icon-btn" aria-label="Редактировать">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-          </a>
-          <a href="#deleteEventModal2" class="admin-icon-btn delete" aria-label="Удалить">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6"/></svg>
-          </a>
-        </div>
-      </div>
 
-
-      <div class="admin-row">
-        <div class="admin-row-date"><b>27</b>августа, 14:00</div>
-        <div class="admin-row-body">
-          <span class="type">Волонтерство</span>
-          <h3>Посадка деревьев</h3>
-          <p>ИНПИТ</p>
-        </div>
-        <div class="admin-row-actions">
-          <a href="#attendeesModal1" class="admin-icon-btn" aria-label="Список записавшихся">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          </a>
-          <a href="#editEventModal1" class="admin-icon-btn" aria-label="Редактировать">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-          </a>
-          <a href="#deleteEventModal1" class="admin-icon-btn delete" aria-label="Удалить">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6"/></svg>
-          </a>
-        </div>
-      </div>
 
     </div>
 
     <div class="admin-add-block">
-      <a href="#addEventModal" class="admin-add-big-btn">
+      <button class="admin-add-big-btn" id="createEventBtn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
         Добавить мероприятие
-      </a>
+      </button>
+      
     </div>
 
   </main>
 
-
-  <div class="admin-modal-target" id="addEventModal">
+<!-- Модалка добавления мероприятия -->
+  <div class="hidden" id="addEventModal">
+    <div class="admin-modal-target" >
     <div class="admin-modal">
       <h2>Новое мероприятие</h2>
-      <form>
+      <form id="createEventForm">
         <div class="form-group">
           <label for="add-title">Название</label>
           <input type="text" id="add-title" placeholder="Название">
@@ -134,10 +102,10 @@
           <div class="form-group">
             <label for="add-type">Категория</label>
             <select id="add-type">
-              <option>Спорт</option>
-              <option>Наука</option>
-              <option>Культура</option>
-              <option>Волонтерство</option>
+              <option value="1">Спорт</option>
+              <option value="2">Наука</option>
+              <option value="3">Культура</option>
+              <option value="4">Волонтерство</option>
             </select>
           </div>
           <div class="form-group">
@@ -156,16 +124,19 @@
           </div>
         </div>
         <div class="submit-btn-block">
-          <a href="admin.html" class="button cancelBtn">Отмена</a>
+          <button class="button cancelBtn" id="addEventModalCancelBtn">Отмена</button>
+          
           <button type="submit" class="button submitBtn">Сохранить</button>
         </div>
       </form>
     </div>
   </div>
+  </div>
+  
 
   <!-- ===================== Модалки редактирования ===================== -->
-
-  <div class="admin-modal-target" id="editEventModal1">
+  <div class="hidden editEventModal" id="editEventModal">
+    <div class="admin-modal-target">
     <div class="admin-modal">
       <h2>Редактировать мероприятие</h2>
       <form>
@@ -180,7 +151,7 @@
               <option>Спорт</option>
               <option>Наука</option>
               <option>Культура</option>
-              <option selected>Волонтерство</option>
+              <option>Волонтерство</option>
             </select>
           </div>
           <div class="form-group">
@@ -199,209 +170,65 @@
           </div>
         </div>
         <div class="submit-btn-block">
-          <a href="admin.html" class="button cancelBtn">Отмена</a>
+          <button class="button editEventModalCancelBtn cancelBtn"> Отмена</button>
           <button type="submit" class="button submitBtn">Сохранить</button>
         </div>
       </form>
     </div>
   </div>
+  </div>
+  
 
-  <div class="admin-modal-target" id="editEventModal2">
-    <div class="admin-modal">
-      <h2>Редактировать мероприятие</h2>
-      <form>
-        <div class="form-group">
-          <label for="edit-title-2">Название</label>
-          <input type="text" id="edit-title-2" value="Хакатон">
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="edit-type-2">Категория</label>
-            <select id="edit-type-2">
-              <option>Спорт</option>
-              <option selected>Наука</option>
-              <option>Культура</option>
-              <option>Волонтерство</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="edit-time-2">Время</label>
-            <input type="time" id="edit-time-2" value="14:00">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="edit-date-2">Дата</label>
-            <input type="date" id="edit-date-2" value="2026-08-08">
-          </div>
-          <div class="form-group">
-            <label for="edit-place-2">Место</label>
-            <input type="text" id="edit-place-2" value="Ауд. 312">
-          </div>
-        </div>
-        <div class="submit-btn-block">
-          <a href="admin.html" class="button cancelBtn">Отмена</a>
-          <button type="submit" class="button submitBtn">Сохранить</button>
-        </div>
-      </form>
-    </div>
-  </div>
+  
 
-  <div class="admin-modal-target" id="editEventModal3">
-    <div class="admin-modal">
-      <h2>Редактировать мероприятие</h2>
-      <form>
-        <div class="form-group">
-          <label for="edit-title-3">Название</label>
-          <input type="text" id="edit-title-3" value="Музей">
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="edit-type-3">Категория</label>
-            <select id="edit-type-3">
-              <option>Спорт</option>
-              <option>Наука</option>
-              <option selected>Культура</option>
-              <option>Волонтерство</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="edit-time-3">Время</label>
-            <input type="time" id="edit-time-3" value="12:00">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="edit-date-3">Дата</label>
-            <input type="date" id="edit-date-3" value="2026-08-08">
-          </div>
-          <div class="form-group">
-            <label for="edit-place-3">Место</label>
-            <input type="text" id="edit-place-3" value="Ауд. 312">
-          </div>
-        </div>
-        <div class="submit-btn-block">
-          <a href="admin.html" class="button cancelBtn">Отмена</a>
-          <button type="submit" class="button submitBtn">Сохранить</button>
-        </div>
-      </form>
-    </div>
-  </div>
+  
 
   <!-- ===================== Модалки удаления ===================== -->
-
-  <div class="admin-modal-target" id="deleteEventModal1">
+  <div class="hidden deleteEventModal" id="deleteEventModal">
+    <div class="admin-modal-target" >
     <div class="confirm-modal">
       <div class="confirm-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6"/></svg>
       </div>
       <h2>Удалить мероприятие?</h2>
-      <p>«Посадка деревьев» пропадёт из расписания и все записи на него будут отменены. Это действие необратимо.</p>
+      <p id="deleteEventNameModal">«Посадка деревьев» пропадёт из расписания и все записи на него будут отменены. Это действие необратимо.</p>
       <div class="submit-btn-block">
-        <a href="admin.html" class="button cancelBtn">Отмена</a>
+        <button class="button deleteEventCancelBtn cancelBtn">Отмена</button>
+        
         <button type="submit" class="button submitBtn">Да, удалить</button>
       </div>
     </div>
   </div>
+  </div>
+  
 
-  <div class="admin-modal-target" id="deleteEventModal2">
-    <div class="confirm-modal">
-      <div class="confirm-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6"/></svg>
-      </div>
-      <h2>Удалить мероприятие?</h2>
-      <p>«Хакатон» пропадёт из расписания и все записи на него будут отменены. Это действие необратимо.</p>
-      <div class="submit-btn-block">
-        <a href="admin.html" class="button cancelBtn">Отмена</a>
-        <button type="submit" class="button submitBtn">Да, удалить</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="admin-modal-target" id="deleteEventModal3">
-    <div class="confirm-modal">
-      <div class="confirm-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6"/></svg>
-      </div>
-      <h2>Удалить мероприятие?</h2>
-      <p>«Музей» пропадёт из расписания и все записи на него будут отменены. Это действие необратимо.</p>
-      <div class="submit-btn-block">
-        <a href="admin.html" class="button cancelBtn">Отмена</a>
-        <button type="submit" class="button submitBtn">Да, удалить</button>
-      </div>
-    </div>
-  </div>
+  
 
   <!-- ===================== Модалки "Записавшиеся" ===================== -->
-
-  <div class="admin-modal-target" id="attendeesModal1">
-    <div class="attendees-modal">
-      <h2>Посадка деревьев</h2>
-      <p class="attendees-count">Пока никто не записался</p>
-      <div class="attendees-empty">
-        Как только кто-то запишется на это мероприятие, список появится здесь
-      </div>
-      <div class="close-modal">
-        <a href="admin.html" class="button cancelBtn">Закрыть</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="admin-modal-target" id="attendeesModal2">
-    <div class="attendees-modal">
-      <h2>Хакатон</h2>
-      <p class="attendees-count">5 записавшихся</p>
-
-      <div class="attendee-row">
-        <div class="attendee-avatar">А</div>
-        <span class="attendee-name">Алина Смирнова</span>
-      </div>
-      <div class="attendee-row">
-        <div class="attendee-avatar">Д</div>
-        <span class="attendee-name">Данил Кузнецов</span>
-      </div>
-      <div class="attendee-row">
-        <div class="attendee-avatar">М</div>
-        <span class="attendee-name">Мария Петрова</span>
-      </div>
-      <div class="attendee-row">
-        <div class="attendee-avatar">С</div>
-        <span class="attendee-name">Салям Ибрагимов</span>
-      </div>
-      <div class="attendee-row">
-        <div class="attendee-avatar">Т</div>
-        <span class="attendee-name">Тимур Ахметов</span>
-      </div>
-
-      <div class="close-modal">
-        <a href="admin.html" class="button cancelBtn">Закрыть</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="admin-modal-target" id="attendeesModal3">
-    <div class="attendees-modal">
-      <h2>Музей</h2>
-      <p class="attendees-count">3 записавшихся</p>
-
+  <div class="hidden attendeesModal" id="attendeesModal">
+    <div class="admin-modal-target">
+    <div class="attendees-modal" >
+      <h2 id="attendeesModalEventName">Посадка деревьев</h2>
+      <p class="attendees-count" id="attendeesCount">3 записавшихся</p>
       <div class="attendee-row">
         <div class="attendee-avatar">И</div>
         <span class="attendee-name">Иван Иванов</span>
       </div>
-      <div class="attendee-row">
-        <div class="attendee-avatar">О</div>
-        <span class="attendee-name">Ольга Соколова</span>
-      </div>
-      <div class="attendee-row">
-        <div class="attendee-avatar">Е</div>
-        <span class="attendee-name">Егор Волков</span>
+        
+      <div class="empty-event" id="emptyEvent">
+        <p class="attendees-count" id="attendeesModalCount">Пока никто не записался</p>
+        <div class="attendees-empty" id="modalUsersCount">
+          Как только кто-то запишется на это мероприятие, список появится здесь
+        </div>
       </div>
 
       <div class="close-modal">
-        <a href="admin.html" class="button cancelBtn">Закрыть</a>
+        <button class="button attendeesModalCancelBtn cancelBtn">Закрыть</button>
       </div>
     </div>
   </div>
-
+  </div>
+  
+  <script type="module" src="../js/admin/adminMain.js"></script>
 </body>
 </html>

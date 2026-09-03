@@ -28,7 +28,53 @@ const PORT = 3000;
 app.get("/events", (req, res) =>{
     res.json(events);
 });
+app.post("/events", (req, res) =>{
+    const {title, date, time, place, type_id} = req.body;
 
+    if (!title || !date || !time || !place || !type_id){
+        res.status(400).json({
+            message: "Не все поля заоплнены"
+        })
+    }
+    const category = db.prepare(
+        "SELECT id FROM categories WHERE id = ?"
+    ).get(type_id);
+
+    if (!category) {
+        return res.status(400).json({
+            message: "Такой категории не существует"
+        });
+    }
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+        return res.status(400).json({
+            message: "Некорректная дата"
+        });
+    }
+    if (!/^\d{2}:\d{2}$/.test(time)) {
+        return res.status(400).json({
+            message: "Некорректное время"
+        });
+    }
+    try {
+        const stmt = db.prepare(`
+            INSERT INTO events (title, date, time, place, type_id, created_by)
+            VALUES (?, ?, ?, ?, ?, ?)
+        `);
+        stmt.run(title, date, time, place, type_id, req.session.userId);
+        res.status(201).json({
+            message: "Мероприятие добавлено"
+        });
+        
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Ошибка сервера", 
+        }); 
+    }
+
+
+
+});
 app.get("/me", (req, res) =>{
     
     const userId = req.session.userId;
