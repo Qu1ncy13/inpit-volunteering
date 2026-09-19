@@ -1,2 +1,4 @@
 import { initAdminListeners } from "./adminListeners.js";
-initAdminListeners();
+import { renderActiveEvents } from "./adminRender.js";
+
+renderActiveEvents();

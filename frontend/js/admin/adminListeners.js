@@ -8,7 +8,6 @@ export function initAdminListeners(){
     createEventBtn.addEventListener("click", () =>{
         activeModal = addEventModal;
         openModal(activeModal);
-        createEvent();
     });
     
     // редактирование мероприятия
@@ -47,6 +46,13 @@ export function initAdminListeners(){
             }
         });
     });
+    createEvent();
+}
+function editEvent(){
+    const editEventForm = document.getElementById("editEventForm");
+
+    const editTitleInput = document.getElementById("");
+    
 }
 function createEvent(){
     const createEventForm = document.getElementById("createEventForm");
@@ -78,5 +84,4 @@ function createEvent(){
         const data = await responce.json();
         console.log(data);
     });
-
 }

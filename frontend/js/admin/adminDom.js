@@ -12,3 +12,5 @@ const usersCount = document.getElementById("usersCount");
 const categoryCount = document.getElementById("categoryCount");
 
 export {eventsCount, usersCount, categoryCount};
+
+export const eventsTable = document.querySelector(".admin-table-wrap");

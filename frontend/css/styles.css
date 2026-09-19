@@ -46,6 +46,7 @@ button {
 
 .cancelBtn:hover {
   background-color: var(--btn-hover);
+  
 }
 
 h1, h2, h3 {

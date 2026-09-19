@@ -3,7 +3,7 @@ import cors from "cors";
 import bcrypt from "bcrypt";
 import session from "express-session";
 
-import { events } from "./database/events.js";
+
 import db from "./database/db.js";
 
 
@@ -25,9 +25,7 @@ app.use(session({
 const PORT = 3000;
 
 
-app.get("/events", (req, res) =>{
-    res.json(events);
-});
+
 app.post("/events", (req, res) =>{
     const {title, date, time, place, type_id} = req.body;
 
@@ -74,6 +72,14 @@ app.post("/events", (req, res) =>{
 
 
 
+});
+app.get("/events", (req, res) =>{
+    const events = db.prepare(`
+        SELECT * FROM events
+        WHERE date >= CURRENT_DATE
+    `).all();
+    res.json(events);
+    
 });
 app.get("/me", (req, res) =>{
     
@@ -209,8 +215,7 @@ app.post("/register", async (req, res) =>{
     }
     const hashedPassword = await bcrypt.hash(password, 12);
 
-
-    
+ 
     try {
         const stmt = db.prepare(`
             INSERT INTO users (name, email, password, study_group)
@@ -224,7 +229,6 @@ app.post("/register", async (req, res) =>{
             message: "Ошибка сервера"
         });
     }
-    
     
 })
 
